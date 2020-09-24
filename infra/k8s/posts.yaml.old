@@ -1,0 +1,11 @@
+# code for example kubernetes config file...file is being replaced with posts-depl.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: posts
+spec:
+  containers:
+    - name: posts
+      image: mattjacob/posts:0.0.1  
+      
+
