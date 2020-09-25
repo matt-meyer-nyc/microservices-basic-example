@@ -29,7 +29,7 @@ app.post( '/posts', async ( req, res ) => {
 			id,
 			title
 		}
-	} );
+	} ).catch( () => { } );
 
 	res.status( 201 ).send( posts[ id ] );
 } );

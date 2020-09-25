@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moderation-depl
+spec:
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: moderation
+  template:
+    metadata: 
+      labels: 
+        app: moderation
+    spec: 
+      containers: 
+        - name: moderation
+          image: mattjacob/moderation   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderation-srv
+spec: 
+  selector:
+    app: moderation
+  #note kubernetes defaults to 'type: ClusterIP' if nothing is set for type...which for this is what's needed
+  ports:
+    - name: moderation
+      protocol: TCP
+      port: 4003
+      targetPort: 4003
